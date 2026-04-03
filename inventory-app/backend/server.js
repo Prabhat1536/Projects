@@ -7,6 +7,15 @@ const app = express();
 
 // Connect Database
 connectDB();
+// Connect to DB in the background
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log("✅ MongoDB Connected"))
+  .catch(err => console.error("❌ MongoDB Error:", err));
+
+// Start the server immediately so Render sees it as "Healthy"
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server listening on ${PORT}`);
+});
 
 // Init Middleware
 app.use(cors());
