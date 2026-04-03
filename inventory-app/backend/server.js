@@ -17,6 +17,11 @@ app.use(express.json({ extended: false }));
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/inventory', require('./routes/inventoryRoutes'));
 
+//const PORT = process.env.PORT || 5000;
+
+//app.listen(PORT, () => console.log(`🚀 Server started on port ${PORT}`));
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => console.log(`🚀 Server started on port ${PORT}`));
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server is ultra-live on port ${PORT}`);
+});
